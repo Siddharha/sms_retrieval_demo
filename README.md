@@ -14,11 +14,11 @@ Recive Message format:
 ## To generate App's hash code for production use below code:
 1. To convert downloaded .der file from playstore to .keystore,use: 
       
-      keytool -importcert -file deployment_cert.der -keystore temporary.keystore -alias PlayDeploymentCert
+keytool -importcert -file deployment_cert.der -keystore temporary.keystore -alias PlayDeploymentCert
     
 2. Next user converted keystore to generate hash key for your app's production build.
      
-     keytool -exportcert -alias YOUR_STORE_ALIAS -keystore temporary.keystore | xxd -p | tr -d "[:space:]" | echo -n      YOUR_PACKAGE `cat` | sha256sum | tr -d " [:space:]-" | xxd -r -p | base64 | cut -c1-11
+  keytool -exportcert -alias YOUR_STORE_ALIAS -keystore temporary.keystore | xxd -p | tr -d "[:space:]" | echo -n      YOUR_PACKAGE `cat` | sha256sum | tr -d " [:space:]-" | xxd -r -p | base64 | cut -c1-11
 
       
 
